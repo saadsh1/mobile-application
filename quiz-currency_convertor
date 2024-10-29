@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const CurrencyConvertorApp());
+}
+
+class CurrencyConvertorApp extends StatelessWidget {
+  const CurrencyConvertorApp({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Currency Convertor',
+      theme: ThemeData(
+      ),
+      home: const CurrencyConvertor(),
+    );
+  }
+}
+
+class CurrencyConvertor extends StatelessWidget {
+  const CurrencyConvertor({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Currency Convertor'),
+       ),
+      const body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Please enter amount in USD',
+              style: TextStyle(fontSize: 18),
+              ),
+            const TextField(height: 20),
+            
+            
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+               
+                ),
+                keyboardType: TextInputType.number,
+              ),
+              
+            ),
+          ],
+        ),
+      ),
+      
+    );
+  }
+}
