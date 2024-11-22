@@ -1,57 +1,55 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const CurrencyConvertorApp());
+  runApp(const MyApp());
 }
 
-class CurrencyConvertorApp extends StatelessWidget {
-  const CurrencyConvertorApp({super.key});
-  
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Currency Convertor',
+      title: 'flutter app',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      home: const CurrencyConvertor(),
+      home: const MyHomePage(),
     );
   }
 }
 
-class CurrencyConvertor extends StatelessWidget {
-  const CurrencyConvertor({super.key});
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    var Names=['saad','noor','zohaib','lala','talha','fakher'];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Currency Convertor'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Please enter amount in USD',
-              style: TextStyle(fontSize: 18),
-            ),
-            const SizedBox(height: 20),
-            
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Amount in USD',
-                ),
-                keyboardType: TextInputType.number,
-              ),
-            ),
-          ],
+        appBar: AppBar(
+          title: const Center(
+              child: Text(
+            "Flutter App",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )),
+          backgroundColor: Colors.black,
+          titleTextStyle: const TextStyle(color: Colors.white),
         ),
-      ),
-    );
+        body: ListView.separated(itemBuilder: (context, index) {
+          return  ListTile(
+leading: Text('${index+1}'),
+title: Text(Names[index]),
+subtitle: Text('Number'),
+trailing: Icon(Icons.add),
+
+          );
+        },
+        itemCount: Names.length,
+        separatorBuilder: (context,index){
+          return Divider(height: 20,thickness: 1,);
+        }
+        )
+        );
   }
 }
